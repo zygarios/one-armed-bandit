@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // outline: .5px solid red;
+}
+
+body {
+  height: 100vh;
+  background: lightgrey;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 15vh auto;
+
+}
+
+.result {
+  position: relative;
+  width: 50%;
+  height: 10vh;
+  background: #9A9899;
+  margin: 0 auto;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 5px -3px 10px 5px rgba(0, 0, 0, .4),
+    inset 5px 0px 30px 0px rgba(0, 0, 0, .7);
+
+  .result-screen {
+    box-shadow: inset 0px 0px 10px 0px black;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 80px);
+    height: calc(100% - 60px);
+    font-family: 'Press Start 2P',
+      cursive;
+    text-align: center;
+    font-size: 35px;
+    padding-top: 8px;
+    background: #690203;
+    color: gold;
+
+  }
+}
+
+.lights {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  border-top: 20px dotted gold;
+  border-left: 20px dotted gold;
+  border-right: 20px dotted gold;
+}
+
+.game-board {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  height: 30vh;
+  background: #9A9899;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 5px -3px 10px 5px rgba(0, 0, 0, .4),
+    inset 5px 0px 75px 0px rgba(0, 0, 0, .7);
+
+  over .lights {
+    border-top: none;
+  }
+
+  .arm {
+    position: absolute;
+    width: 50px;
+    height: 100px;
+    background: linear-gradient(rgb(199, 151, 29), rgb(177, 150, 0), rgb(199, 151, 29));
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0 100% 100% 0;
+    cursor: pointer;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .5);
+
+    &:hover span {
+      transform: rotate(50deg);
+
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 35px;
+      height: 100px;
+      background: linear-gradient(goldenrod, gold, goldenrod);
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 0 100% 100% 0;
+      cursor: pointer;
+      box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .5);
+    }
+
+
+    span {
+      position: absolute;
+      width: 20px;
+      height: 175px;
+      background: linear-gradient(#E8D36B, rgb(187, 114, 50), );
+      left: 10%;
+      bottom: 50%;
+      transform-origin: bottom;
+      transform: rotate(15deg);
+      border-radius: 100% 100% 75% 75%;
+      transition: transform .3s;
+      box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .5);
+
+      &.arm-clicked {
+        transform: rotate(165deg);
+      }
+
+      &:after {
+        position: absolute;
+        content: "";
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        left: 50%;
+        top: -10%;
+        transform: translateX(-50%);
+        background: red;
+        box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .5);
+      }
+
+
+    }
+
+  }
+}
+
+.settings {
+  height: 15vh;
+  perspective: 413px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.console {
+  background: #9A9899;
+  height: 100%;
+  transform-origin: top;
+  transform: rotateX(30deg) scaleY(1.04);
+}
+
+.stats {
+  width: 100%;
+  margin: 0 auto;
+  height: 15vh;
+  background: #9A9899;
+}
