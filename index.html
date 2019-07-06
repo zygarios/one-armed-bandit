@@ -15,30 +15,72 @@
   <body>
     <div class="container">
       <div class="result">
-        <div class="lights"></div>
-        <h3 class="result-screen">BIG WIN</h3>
+        <div class="lights-top">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <h3 class="result-screen">Let's play!</h3>
       </div>
       <div class="game-board">
-        <div class="lights">
-          <div class="cards-container">
-            <div class="card" id="card-1"></div>
-            <div class="card" id="card-2"></div>
-            <div class="card" id="card-3"></div>
+        <div class="lights-top">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="cards-container">
+          <div class="card" id="card-1">
+            <ul>
+              <li style="background-image: url('pineapple.png')"></li>
+            </ul>
+          </div>
+          <div class="card" id="card-2">
+            <ul>
+              <li style="background-image: url('kiwi.png')"></li>
+            </ul>
+          </div>
+          <div class="card" id="card-3">
+            <ul>
+              <li style="background-image: url('lemon.png')"></li>
+            </ul>
           </div>
         </div>
-        <div class="arm"><span></span></div>
+        <div class="arm"><span class="arm-span"></span></div>
       </div>
       <div class="console-container">
         <div class="console">
           <input class="set-deal" type="number" placeholder="Input value" />
           <div class="stats">
-            <p>Last draw: <span class="last-draw">0</span></p>
-            <p>Your money: <span class="cash">0</span></p>
+            <p>Wins: <br /><span class="wins">0</span></p>
+            <p>Loses: <br /><span class="loses">0</span></p>
+            <p>Games: <br /><span class="draws">0</span></p>
+            <p>Last draw: <br /><span class="last-draw">0</span></p>
+            <p>Your money: <br /><span class="cash">0</span></p>
           </div>
         </div>
       </div>
       <div class="block"></div>
     </div>
+    <!-- <script src="Wallet.js"></script>
+    <script src="Statistics.js"></script>
+    <script src="Game.js"></script> -->
     <script src="script.js"></script>
   </body>
 </html>
