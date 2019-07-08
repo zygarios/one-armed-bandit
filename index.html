@@ -15,7 +15,7 @@
   <body>
     <div class="container">
       <div class="result">
-        <div class="lights-top">
+        <div class="lights">
           <span></span>
           <span></span>
           <span></span>
@@ -30,7 +30,7 @@
         <h3 class="result-screen">Let's play!</h3>
       </div>
       <div class="game-board">
-        <div class="lights-top">
+        <div class="lights">
           <span></span>
           <span></span>
           <span></span>
@@ -46,19 +46,30 @@
           <span></span>
         </div>
         <div class="cards-container">
+          <div class="gate">
+            <h1 class="gate-text">New Game</h1>
+            <h3 class="gate-subtext"></h3>
+            <button class="reset">Start with 1000$</button>
+          </div>
           <div class="card" id="card-1">
             <ul>
-              <li style="background-image: url('pineapple.png')"></li>
+              <li
+                style="background-image: url('pineapple.png')"
+                data-index="0"
+              ></li>
             </ul>
           </div>
           <div class="card" id="card-2">
             <ul>
-              <li style="background-image: url('kiwi.png')"></li>
+              <li style="background-image: url('kiwi.png')" data-index="1"></li>
             </ul>
           </div>
           <div class="card" id="card-3">
             <ul>
-              <li style="background-image: url('lemon.png')"></li>
+              <li
+                style="background-image: url('lemon.png')"
+                data-index="2"
+              ></li>
             </ul>
           </div>
         </div>
@@ -70,17 +81,21 @@
           <div class="stats">
             <p>Wins: <br /><span class="wins">0</span></p>
             <p>Loses: <br /><span class="loses">0</span></p>
-            <p>Games: <br /><span class="draws">0</span></p>
-            <p>Last draw: <br /><span class="last-draw">0</span></p>
-            <p>Your money: <br /><span class="cash">0</span></p>
+            <p>Games: <br /><span class="games">0</span></p>
+            <p>Last draw: <br /><span class="last-draw">0$</span></p>
+            <p>Your money: <br /><span class="cash">0$</span></p>
           </div>
         </div>
       </div>
-      <div class="block"></div>
+      <div class="block">
+        <div class="reward">
+          <div class="shadow"></div>
+          <div class="coins-win"></div>
+          <div class="coins-fall-win"></div>
+          <div class="glass"></div>
+        </div>
+      </div>
     </div>
-    <!-- <script src="Wallet.js"></script>
-    <script src="Statistics.js"></script>
-    <script src="Game.js"></script> -->
     <script src="script.js"></script>
   </body>
 </html>

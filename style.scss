@@ -18,7 +18,7 @@
   }
 
   50% {
-    color: rgba(255, 215, 0, .35);
+    color: rgba(255, 215, 0, 0.35);
   }
 
   100% {
@@ -26,11 +26,27 @@
   }
 }
 
+@keyframes lightsOn {
+  0% {
+    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5), 0 0 0px 0 goldenrod;
+    background: gold;
+  }
+  50% {
+    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5), 0 0 10px 2px gold;
+    background: yellow;
+  }
+  100% {
+    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5), 0 0 0px 0 goldenrod;
+    background: gold;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  // outline: .5px solid red;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
 }
 
 html {
@@ -43,60 +59,20 @@ body {
   overflow: hidden;
 }
 
-.container {
-  max-width: 800px;
+body::after {
+  content: '';
   width: 100%;
-  margin: 15vh auto;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url('casino3.png');
+  z-index: -1;
+  filter: blur(1.5px);
+  transform: scale(1.01);
 }
 
-
-.result {
-  position: relative;
-  width: 50%;
-  height: 120px;
-  background: #9a9899;
-  margin: 0 auto;
-  border-radius: 30px 30px 0 0;
-  box-shadow: 5px -3px 10px 5px rgba(0, 0, 0, 0.4),
-    inset 5px 0px 30px 0px rgba(0, 0, 0, 0.7);
-
-  .result-screen {
-    box-shadow: inset 0px 0px 10px 0px black;
-    border-radius: 10px;
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    height: 50%;
-    font-family: "Press Start 2P", cursive;
-    text-align: center;
-    font-size: 3rem;
-    padding-top: 18px;
-    text-transform: uppercase;
-    background: #690203;
-    color: gold;
-    cursor: default;
-    overflow: hidden;
-
-    &.alert {
-      animation: alert .35s linear 0s infinite;
-    }
-
-    &:before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 300px;
-      transform: translate(-50%, -50%) rotate(-8deg);
-      background: rgba(255, 255, 255, 0.35);
-      box-shadow: 0 0 25px 15px rgba(255, 255, 255, 0.25);
-    }
-  }
-}
-
-.lights-top {
+.lights {
   position: absolute;
   left: 0;
   top: 0;
@@ -107,24 +83,82 @@ body {
 
   span {
     margin-top: 10px;
-    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, .5), 0 0 0px 0 gold;
+    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5), 0 0 0px 0 goldenrod;
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: yellow;
+    background: gold;
+    &.light-active {
+      animation: lightsOn 0.25s linear;
+      animation-iteration-count: 10;
+    }
   }
 }
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 10vh auto;
+}
 
+.result {
+  position: relative;
+  width: 50%;
+  height: 120px;
+  background: #747474;
+  margin: 0 auto;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 5px -3px 10px 10px rgba(0, 0, 0, 0.4),
+    inset 5px 0px 8px 5px rgba(47, 31, 0, 0.7);
+
+  .result-screen {
+    box-shadow: inset 5px 3px 5px 5px rgba(0, 0, 0, 0.6);
+    letter-spacing: -1px;
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 50%;
+    text-align: center;
+    font-size: 2.5rem;
+    padding-top: 18px;
+    text-transform: uppercase;
+    background: #690203;
+    color: gold;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover::before {
+      box-shadow: 0 -10px 25px 15px rgba(255, 255, 255, 0.25);
+    }
+    &.alert {
+      animation: alert 0.35s linear 0s infinite;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transition: box-shadow 0.15s;
+      width: 300px;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      background: rgba(255, 255, 255, 0.35);
+      box-shadow: 0 5px 25px 15px rgba(255, 255, 255, 0.25);
+    }
+  }
+}
 
 .game-board {
   position: relative;
   width: 80%;
   margin: 0 auto;
   height: 300px;
-  background: #9a9899;
+  background: #7c7c7c;
   border-radius: 30px 30px 0 0;
   box-shadow: 5px -3px 10px 5px rgba(0, 0, 0, 0.4),
-    inset 5px 0px 75px 0px rgba(0, 0, 0, 0.7);
+    inset 7px 3px 20px 2px rgba(36, 24, 0, 0.9);
 
   .cards-container {
     overflow: hidden;
@@ -136,44 +170,157 @@ body {
     transform: translate(-50%, -50%);
     background: goldenrod;
     border-radius: 25px;
-    border: 5px solid gold;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: inset rgba(26, 26, 26, 0.6) 3px 4px 6px 5px,
+      inset rgb(190, 145, 32) 0 -1px 3px 10px, inset rgb(0, 0, 0) 0 2px 5px 5px,
+      rgba(41, 31, 6, 0.4) -2px -2px 10px 3px;
+
+    .gate {
+      display: flex;
+      position: absolute;
+      cursor: default;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      transform: translateY(0);
+      transition: transform 1.5s;
+      border-radius: 25px;
+      box-shadow: inset hsla(0, 0%, 15%, 0.8) 0 -1px 5px 4px,
+        inset hsla(39, 100%, 12%, 0.25) 0 -1px 2px 7px,
+        inset hsla(0, 0%, 70%, 0.7) 0 2px 3px 7px;
+      background-image: -webkit-repeating-linear-gradient(
+          left,
+          hsla(0, 0%, 70%, 0) 0%,
+          hsla(0, 0%, 70%, 0) 6%,
+          hsla(0, 0%, 70%, 0.1) 7.5%
+        ),
+        -webkit-repeating-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, hsla(
+                0,
+                0%,
+                0%,
+                0
+              )
+              4%, hsla(0, 0%, 0%, 0.03) 4.5%),
+        -webkit-repeating-linear-gradient(left, hsla(0, 0%, 100%, 0) 0%, hsla(
+                0,
+                0%,
+                70%,
+                0
+              )
+              1.2%, hsla(0, 0%, 100%, 0.15) 2.2%),
+        linear-gradient(
+          180deg,
+          hsl(0, 0%, 60%) 0%,
+          hsl(0, 0%, 70%) 47%,
+          hsl(0, 0%, 80%) 53%,
+          hsl(0, 0%, 40%) 100%
+        );
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      flex-wrap: wrap;
+      text-align: center;
+
+      .gate-text,
+      .gate-subtext {
+        width: 100%;
+        margin: 10px;
+        text-shadow: hsla(0, 0%, 40%, 0.5) 0 -1px 0,
+          hsla(0, 0%, 100%, 0.6) 0 2px 1px;
+        color: rgb(90, 90, 90);
+      }
+
+      .gate-text {
+        font-size: 4rem;
+      }
+
+      .gate-subtext {
+        line-height: 20px;
+        font-size: 1.25rem;
+      }
+
+      .reset {
+        font-size: 1.25rem;
+        font-weight: 300;
+        cursor: pointer;
+        transition: transform 0.15s, box-shadow 0.15s;
+        padding: 25px 30px 20px;
+        border: none;
+        border-radius: 20px;
+        box-shadow: inset #7c7c7ccc 0 -1px 5px 4px,
+          inset #ffffffb3 0 -1px 0px 7px, inset #27272740 0 2px 1px 7px,
+          2px 3px 3px 0 rgb(85, 85, 85);
+        background-image: -webkit-repeating-linear-gradient(
+            left,
+            hsla(0, 0%, 100%, 0) 0%,
+            hsla(0, 0%, 100%, 0) 6%,
+            hsla(0, 0%, 100%, 0.1) 7.5%
+          ),
+          -webkit-repeating-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, hsla(
+                  0,
+                  0%,
+                  0%,
+                  0
+                )
+                4%, hsla(0, 0%, 0%, 0.03) 4.5%),
+          -webkit-repeating-linear-gradient(left, hsla(0, 0%, 100%, 0) 0%, hsla(
+                  0,
+                  0%,
+                  100%,
+                  0
+                )
+                1.2%, hsla(0, 0%, 100%, 0.15) 2.2%),
+          linear-gradient(
+            180deg,
+            hsl(0, 0%, 78%) 0%,
+            hsl(0, 0%, 90%) 47%,
+            hsl(0, 0%, 78%) 53%,
+            hsl(0, 0%, 70%) 100%
+          );
+
+        &:hover {
+          transform: translate(3px, 3px);
+          box-shadow: inset #7c7c7ccc 0 -1px 5px 4px,
+            inset #ffffffb3 0 -1px 0px 7px, inset #27272740 0 2px 1px 7px,
+            0 0 0 0 rgb(85, 85, 85);
+        }
+      }
+    }
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       width: 700px;
       transform: rotate(-10deg);
       background: rgba(255, 255, 255, 0.5);
-      box-shadow: 0 0 50px 60px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 50px 50px rgba(255, 255, 255, 0.3);
+      z-index: 1;
       filter: brightness(100%);
-      transition: box-shadow .3s;
+      transition: box-shadow 0.3s;
     }
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, .1);
-      transition: background .3s;
-      box-shadow: inset 15px 15px 50px 0px rgba(255, 255, 255, .25),
-        inset -10px -10px 30px 0 rgba(255, 255, 255, .5);
+      background: rgba(155, 155, 155, 0.1);
+      transition: background 0.3s;
+      box-shadow: inset 15px 15px 50px 0px rgba(214, 214, 214, 0.25),
+        inset -10px -10px 30px 0 rgba(180, 180, 180, 0.5);
     }
-
 
     &:hover {
       cursor: pointer;
 
       &::before {
-        box-shadow: 0 -50px 50px 60px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 -35px 50px 50px rgba(255, 255, 255, 0.3);
       }
 
       &::after {
-        background: rgba(255, 255, 255, .2);
+        background: rgba(255, 255, 255, 0.15);
       }
     }
 
@@ -191,9 +338,10 @@ body {
         list-style-type: none;
         position: absolute;
         width: 100%;
+        height: 100%;
         left: 0;
         bottom: 0;
-        transition: bottom 3s ease;
+        transition: bottom 2s ease;
 
         li {
           height: 175px;
@@ -201,7 +349,6 @@ body {
           background-position: center;
           background-size: cover;
         }
-
       }
     }
   }
@@ -210,22 +357,27 @@ body {
     position: absolute;
     width: 50px;
     height: 100px;
-    background: linear-gradient(rgb(199, 151, 29),
-        rgb(177, 150, 0),
-        rgb(199, 151, 29));
+    background: linear-gradient(
+      rgb(199, 151, 29),
+      rgb(177, 150, 0),
+      rgb(199, 151, 29)
+    );
     left: 100%;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 0 100% 100% 0;
     cursor: pointer;
-    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.75) 12px 10px 10px 2px;
 
     &:hover .arm-span::after {
-      box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: inset rgba(88, 0, 0, 0.8) 0 -1px 7px 4px,
+        inset rgba(255, 0, 0, 0.7) 0 2px 1px -10px,
+        rgba(0, 0, 0, 0.5) 12px -2px 5px 4px;
     }
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       width: 35px;
       height: 100px;
@@ -235,7 +387,8 @@ body {
       transform: translateY(-50%);
       border-radius: 0 100% 100% 0;
       cursor: pointer;
-      box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+      box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.4) 7px 0 7px 0px;
     }
 
     .arm-span {
@@ -248,8 +401,8 @@ body {
       transform-origin: bottom;
       transform: rotate(15deg);
       border-radius: 100% 100% 75% 75%;
-      transition: transform 0.3s;
-      box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+      box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.4) 10px 5px 7px 2px;
 
       &.arm-clicked {
         animation: armHand 1.5s;
@@ -257,7 +410,7 @@ body {
 
       &:after {
         position: absolute;
-        content: "";
+        content: '';
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -265,7 +418,9 @@ body {
         top: -10%;
         transform: translateX(-50%);
         background: red;
-        box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: inset rgba(29, 0, 0, 0.8) 0 -1px 7px 4px,
+          inset rgba(255, 0, 0, 0.7) 0 2px 1px -10px,
+          rgba(0, 0, 0, 0.5) 12px -2px 5px 4px;
       }
     }
   }
@@ -278,30 +433,30 @@ body {
   margin: 0 auto;
 
   .console {
-    background: #9a9899;
+    background: #868686;
     height: 100%;
     transform-origin: top;
-    transform: rotateX(30.5deg) scaleY(1.05);
+    transform: rotateX(27deg) scaleY(1.075);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: inset 0px 0px 50px 0px rgba(0, 0, 0, 0.75),
-      10px -5px 10px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 8px 5px 20px 5px rgba(44, 29, 0, 0.6),
+      10px -5px 15px 2px rgba(0, 0, 0, 0.3);
 
     .set-deal {
       width: 30%;
-      font-family: "Press Start 2P", cursive;
       padding: 20px;
       text-align: center;
       font-size: 1.75rem;
       background: goldenrod;
       border: none;
       box-shadow: inset 5px 5px 10px 0px rgba(0, 0, 0, 0.35),
-        inset -15px -15px 25px 5px rgba(255, 255, 255, .35);
+        inset -15px -15px 25px 5px rgba(255, 255, 255, 0.35);
       border: 2px solid gold;
       border-radius: 15px;
-      color: black;
-      transition: background .3s;
+      color: rgb(60, 60, 60);
+      transition: background 0.3s;
+      font-family: 'Press Start 2P', cursive;
 
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button {
@@ -310,8 +465,9 @@ body {
       }
 
       &::placeholder {
-        font-size: 1.25rem;
-        color: rgba(0, 0, 0, 0.2);
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.3);
+        font-family: 'Press Start 2P', cursive;
       }
 
       &:hover {
@@ -325,39 +481,42 @@ body {
       width: 60%;
       height: 80%;
       background: rgb(218, 165, 32);
-      font-family: "Press Start 2P", cursive;
       padding: 10px;
-      font-size: 1.35rem;
+      font-size: 1.05rem;
       line-height: 2.5rem;
       border-radius: 15px;
-      border: 2px solid gold;
-      box-shadow: inset 5px 5px 10px 0px rgba(0, 0, 0, 0.25),
-        inset -10px -10px 20px 0px rgba(255, 255, 255, .6);
+      border: 1px solid rgb(195, 166, 0);
       position: relative;
       overflow: hidden;
       display: flex;
       flex-wrap: wrap;
       text-transform: uppercase;
-      transition: background .3s;
+      transition: background 0.3s;
+      color: rgb(49, 49, 49);
+      text-shadow: 1px 1px 0px lightgrey;
+      letter-spacing: 1px;
+      box-shadow: inset rgb(170, 130, 29) 0 -5px 5px 4px,
+        inset rgba(150, 150, 150, 0.25) 0 -1px 0px 7px,
+        inset rgba(225, 225, 225, 0.7) 0 2px 10px 7px,
+        rgba(0, 0, 0, 0.15) -10px -3px 6px 2px;
 
       p {
         width: 33.333%;
         height: 50%;
         display: block;
-        font-size: .9rem;
         font-weight: 700;
       }
 
       p:nth-of-type(4) {
-        width: 50%
+        width: 50%;
       }
 
       p:nth-of-type(5) {
-        width: 50%
+        width: 50%;
       }
 
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         left: 50%;
         top: 50%;
@@ -365,7 +524,7 @@ body {
         transform: translate(-50%, -50%) rotate(-15deg);
         background: rgba(255, 255, 255, 0.35);
         box-shadow: 0 20px 30px 40px rgba(255, 255, 255, 0.3);
-        transition: box-shadow .3s;
+        transition: box-shadow 0.3s;
       }
 
       &:hover {
@@ -376,7 +535,6 @@ body {
           box-shadow: 0 -30px 30px 30px rgba(255, 255, 255, 0.3);
         }
       }
-
     }
   }
 }
@@ -384,8 +542,114 @@ body {
 .block {
   width: 100%;
   margin: 0 auto;
-  height: 150px;
-  box-shadow: inset 0px -5px 20px 0px rgba(0, 0, 0, 0.75),
+  height: 200px;
+  border-radius: 20px 18px 40px 40px / 25% 25% 40px 40px;
+  box-shadow: inset 7px -7px 25px 6px rgba(31, 19, 0, 0.8),
     10px -5px 10px 2px rgba(0, 0, 0, 0.4);
   background: linear-gradient(#929091, #444244);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .reward {
+    width: 300px;
+    height: 135px;
+    border-radius: 25px;
+    background: rgb(158, 119, 21);
+    position: relative;
+    overflow: hidden;
+    transition: filter 0.25s;
+    filter: brightness(90%);
+    cursor: pointer;
+    &:hover .glass:after {
+      transform: translate(-65%, -50%) rotate(-12deg);
+    }
+    &:hover {
+      filter: brightness(110%);
+    }
+
+    .shadow {
+      content: '';
+      border-radius: 25px;
+      box-shadow: inset 0 -5px 15px 2px rgba(2, 0, 0, 0.85);
+      z-index: 1;
+    }
+
+    .coins-fall-win,
+    .coins-win,
+    .shadow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    @keyframes goldReward {
+      0% {
+        background-position: center -250%;
+      }
+      60% {
+        background-position: center 0;
+      }
+      80% {
+        background-position: center 0;
+      }
+      100% {
+        background-position: center -250%;
+      }
+    }
+    @keyframes goldFall {
+      0% {
+        background-position: center 1200%;
+      }
+      75% {
+        background-position: center 0;
+      }
+      100% {
+        background-position: center 0;
+      }
+    }
+    .coins-fall-win {
+      width: 100%;
+      background: url('coins-fall-win.png');
+      background-size: 100% auto;
+      background-position: center 1200%;
+      &.active-anim {
+        animation: goldFall 4s linear;
+      }
+    }
+
+    .coins-win {
+      background: url('coins-win.png') no-repeat;
+      background-position: center -200%;
+      &.active-anim {
+        animation: goldReward 4s ease-out;
+      }
+    }
+
+    .glass {
+      position: absolute;
+      width: 100%;
+      height: 65%;
+      background: rgba(255, 255, 255, 0.233);
+      border-radius: 25px 25px 0 0;
+      box-shadow: inset rgba(195, 160, 0, 0.5) 0 3px 5px 2px,
+        inset rgb(97, 69, 23) 0 -1px 6px 0px,
+        inset rgba(175, 0, 0, 0.102) 0 2px 5px 7px,
+        rgba(92, 10, 10, 0.2) 0px 0px 5px 3px;
+      overflow: hidden;
+      &:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transition: box-shadow 0.15s;
+        width: 400px;
+        transform: translate(-50%, -50%) rotate(-8deg);
+        background: rgba(255, 255, 255, 0.35);
+        box-shadow: 0 5px 35px 15px rgba(255, 255, 255, 0.25);
+        transition: transform 0.15s;
+      }
+    }
+  }
 }
