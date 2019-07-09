@@ -460,14 +460,14 @@ body::after {
           animation: armHand 1.5s;
 }
 
-.game-board .arm .arm-span:after {
+.game-board .arm .arm-span span {
   position: absolute;
   content: '';
   width: 40px;
   height: 40px;
   border-radius: 50%;
   left: 50%;
-  top: -10%;
+  top: -25px;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   background: red;

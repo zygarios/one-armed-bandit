@@ -54,7 +54,7 @@ const gameOver = () => {
   gate.style.transform = 'translateY(0)';
   gateText.textContent = 'GAME OVER!';
   gateSubtext.innerHTML = `You lost all money!`;
-  reset.textContent = 'Start again with 100$';
+  reset.textContent = 'Start again with 1000$';
   isGameOver = true;
 };
 
@@ -98,7 +98,6 @@ const animReward = () => {
   lightsTop.forEach(item => {
     item.classList.remove('light-active');
     setTimeout(() => {
-      console.log(item.classList);
       item.classList.add('light-active');
     }, topTime);
     topTime += 35;
@@ -156,7 +155,7 @@ const handleResultCheck = () => {
   ) {
     setStats(true);
   } else {
-    setStats(true);
+    setStats(false);
   }
 };
 
@@ -191,6 +190,7 @@ const handleGameStart = () => {
   isMachineWorks = false;
   inputValue = input.value;
   input.value = '';
+  resultScreen.textContent = inputValue + '$';
   if (inputValue > stats.money) {
     screenAlert('No money');
     isMachineWorks = true;
@@ -199,11 +199,10 @@ const handleGameStart = () => {
     screenAlert('Empty value');
     isMachineWorks = true;
     return;
-  } else if (inputValue == stats.money) {
+  } else if (inputValue == '' || inputValue == 0) {
     screenAlert('Va banque!');
   }
 
-  resultScreen.textContent = inputValue + '$';
   armSpan.classList.add('arm-clicked');
   setTimeout(() => {
     armSpan.classList.remove('arm-clicked');
@@ -232,10 +231,3 @@ const resetGame = () => {
 cashSpan.textContent = stats.money + '$';
 reset.addEventListener('click', resetGame);
 arm.addEventListener('click', handleGameStart);
-
-window.addEventListener('mousemove', e => {
-  console.log(e.clientX);
-  console.log(e.clientY);
-  const ball = document.querySelector('.arm-span::after');
-  console.log(ball);
-});
