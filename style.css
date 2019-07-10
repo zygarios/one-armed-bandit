@@ -102,15 +102,24 @@ html {
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   background: lightgrey;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   overflow: hidden;
 }
 
 body::after {
   content: '';
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
   left: 0;
   top: 0;
@@ -140,8 +149,8 @@ body::after {
   margin-top: 10px;
   -webkit-box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5), 0 0 0px 0 goldenrod;
           box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5), 0 0 0px 0 goldenrod;
-  width: 18px;
-  height: 18px;
+  width: 1.75vmin;
+  height: 1.75vmin;
   border-radius: 50%;
   background: gold;
 }
@@ -155,14 +164,19 @@ body::after {
 
 .container {
   max-width: 800px;
-  width: 100%;
-  margin: 10vh auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .result {
   position: relative;
-  width: 50%;
-  height: 120px;
+  width: 40vmin;
+  height: 13vmin;
   background: #747474;
   margin: 0 auto;
   border-radius: 30px 30px 0 0;
@@ -180,11 +194,11 @@ body::after {
   top: 60%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 90%;
+  width: 85%;
   height: 50%;
   text-align: center;
-  font-size: 2.5rem;
-  padding-top: 18px;
+  font-size: 2.5vmin;
+  padding-top: 2.5vmin;
   text-transform: uppercase;
   background: #690203;
   color: gold;
@@ -212,8 +226,8 @@ body::after {
   transition: box-shadow 0.15s;
   transition: box-shadow 0.15s, -webkit-box-shadow 0.15s;
   width: 300px;
-  -webkit-transform: translate(-50%, -50%) rotate(-8deg);
-          transform: translate(-50%, -50%) rotate(-8deg);
+  -webkit-transform: translate(-50%, -50%) rotate(15deg);
+          transform: translate(-50%, -50%) rotate(15deg);
   background: rgba(255, 255, 255, 0.35);
   -webkit-box-shadow: 0 5px 25px 15px rgba(255, 255, 255, 0.25);
           box-shadow: 0 5px 25px 15px rgba(255, 255, 255, 0.25);
@@ -221,9 +235,9 @@ body::after {
 
 .game-board {
   position: relative;
-  width: 80%;
+  width: 65vmin;
+  height: 35vmin;
   margin: 0 auto;
-  height: 300px;
   background: #7c7c7c;
   border-radius: 30px 30px 0 0;
   -webkit-box-shadow: 5px -3px 10px 5px rgba(0, 0, 0, 0.4), inset 7px 3px 20px 2px rgba(36, 24, 0, 0.9);
@@ -295,23 +309,26 @@ body::after {
 }
 
 .game-board .cards-container .gate .gate-text {
-  font-size: 4rem;
+  font-size: 4vmin;
 }
 
 .game-board .cards-container .gate .gate-subtext {
-  line-height: 20px;
-  font-size: 1.25rem;
+  line-height: 2vmin;
+  font-size: 2vmin;
+  color: grey;
 }
 
 .game-board .cards-container .gate .reset {
-  font-size: 1.25rem;
+  font-size: 1.5vmin;
   font-weight: 300;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.15s, -webkit-box-shadow 0.15s;
   transition: -webkit-transform 0.15s, -webkit-box-shadow 0.15s;
   transition: transform 0.15s, box-shadow 0.15s;
   transition: transform 0.15s, box-shadow 0.15s, -webkit-transform 0.15s, -webkit-box-shadow 0.15s;
-  padding: 25px 30px 20px;
+  display: block;
+  width: 32vmin;
+  height: 6vmin;
   border: none;
   border-radius: 20px;
   -webkit-box-shadow: inset #7c7c7ccc 0 -1px 5px 4px, inset #ffffffb3 0 -1px 0px 7px, inset #27272740 0 2px 1px 7px, 2px 3px 3px 0 #555555;
@@ -372,7 +389,7 @@ body::after {
 
 .game-board .cards-container .card {
   width: 25%;
-  height: 175px;
+  height: 20vmin;
   background: silver;
   border: 3px solid #603912;
   border-radius: 5px;
@@ -394,16 +411,16 @@ body::after {
 }
 
 .game-board .cards-container .card ul li {
-  height: 175px;
+  height: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
 }
 
 .game-board .arm {
   position: absolute;
-  width: 50px;
-  height: 100px;
+  width: 6vmin;
+  height: 12vmin;
   background: -webkit-gradient(linear, left top, left bottom, from(#c7971d), color-stop(#b19600), to(#c7971d));
   background: linear-gradient(#c7971d, #b19600, #c7971d);
   left: 100%;
@@ -424,8 +441,8 @@ body::after {
 .game-board .arm:after {
   content: '';
   position: absolute;
-  width: 35px;
-  height: 100px;
+  width: 4vmin;
+  height: 12vmin;
   background: -webkit-gradient(linear, left top, left bottom, from(goldenrod), color-stop(gold), to(goldenrod));
   background: linear-gradient(goldenrod, gold, goldenrod);
   left: 0;
@@ -440,8 +457,8 @@ body::after {
 
 .game-board .arm .arm-span {
   position: absolute;
-  width: 20px;
-  height: 175px;
+  width: 2.5vmin;
+  height: 22.5vmin;
   background: -webkit-gradient(linear, left top, left bottom, from(#e8d36b), to(#bb7232));
   background: linear-gradient(#e8d36b, #bb7232);
   left: 10%;
@@ -462,12 +479,11 @@ body::after {
 
 .game-board .arm .arm-span span {
   position: absolute;
-  content: '';
-  width: 40px;
-  height: 40px;
+  width: 5vmin;
+  height: 5vmin;
   border-radius: 50%;
-  left: 50%;
-  top: -25px;
+  right: -3.75vmin;
+  top: -3.25vmin;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   background: red;
@@ -476,16 +492,18 @@ body::after {
 }
 
 .console-container {
-  height: 150px;
-  -webkit-perspective: 400px;
-          perspective: 400px;
-  width: 80%;
+  height: 18vmin;
+  width: 65vmin;
+  -webkit-perspective: 55vmin;
+          perspective: 55vmin;
   margin: 0 auto;
+  z-index: 1;
 }
 
 .console-container .console {
   background: #868686;
   height: 100%;
+  border-radius: 0 0 15px 15px;
   -webkit-transform-origin: top;
           transform-origin: top;
   -webkit-transform: rotateX(27deg) scaleY(1.075);
@@ -504,9 +522,10 @@ body::after {
 
 .console-container .console .set-deal {
   width: 30%;
-  padding: 20px;
+  display: block;
+  height: 35%;
   text-align: center;
-  font-size: 1.75rem;
+  font-size: 1.75vmin;
   background: goldenrod;
   border: none;
   -webkit-box-shadow: inset 5px 5px 10px 0px rgba(0, 0, 0, 0.35), inset -15px -15px 25px 5px rgba(255, 255, 255, 0.35);
@@ -525,25 +544,25 @@ body::after {
 }
 
 .console-container .console .set-deal::-webkit-input-placeholder {
-  font-size: 1rem;
+  font-size: 1vmin;
   color: rgba(0, 0, 0, 0.3);
   font-family: 'Press Start 2P', cursive;
 }
 
 .console-container .console .set-deal:-ms-input-placeholder {
-  font-size: 1rem;
+  font-size: 1vmin;
   color: rgba(0, 0, 0, 0.3);
   font-family: 'Press Start 2P', cursive;
 }
 
 .console-container .console .set-deal::-ms-input-placeholder {
-  font-size: 1rem;
+  font-size: 1vmin;
   color: rgba(0, 0, 0, 0.3);
   font-family: 'Press Start 2P', cursive;
 }
 
 .console-container .console .set-deal::placeholder {
-  font-size: 1rem;
+  font-size: 1vmin;
   color: rgba(0, 0, 0, 0.3);
   font-family: 'Press Start 2P', cursive;
 }
@@ -559,8 +578,8 @@ body::after {
   height: 80%;
   background: goldenrod;
   padding: 10px;
-  font-size: 1.05rem;
-  line-height: 2.5rem;
+  font-size: 1.1vmin;
+  line-height: 2.15vmin;
   border-radius: 15px;
   border: 1px solid #c3a600;
   position: relative;
@@ -601,8 +620,8 @@ body::after {
   left: 50%;
   top: 50%;
   width: 300px;
-  -webkit-transform: translate(-50%, -50%) rotate(-15deg);
-          transform: translate(-50%, -50%) rotate(-15deg);
+  -webkit-transform: translate(-50%, -50%) rotate(15deg);
+          transform: translate(-50%, -50%) rotate(15deg);
   background: rgba(255, 255, 255, 0.35);
   -webkit-box-shadow: 0 20px 30px 40px rgba(255, 255, 255, 0.3);
           box-shadow: 0 20px 30px 40px rgba(255, 255, 255, 0.3);
@@ -623,12 +642,14 @@ body::after {
 }
 
 .block {
-  width: 100%;
+  -webkit-transform: translateY(-1vmin);
+          transform: translateY(-1vmin);
+  height: 20vmin;
+  width: 76vmin;
   margin: 0 auto;
-  height: 200px;
-  border-radius: 20px 18px 40px 40px / 25% 25% 40px 40px;
-  -webkit-box-shadow: inset 7px -7px 25px 6px rgba(31, 19, 0, 0.8), 10px -5px 10px 2px rgba(0, 0, 0, 0.4);
-          box-shadow: inset 7px -7px 25px 6px rgba(31, 19, 0, 0.8), 10px -5px 10px 2px rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 40px 40px / 0 0 40px 40px;
+  -webkit-box-shadow: inset 7px 15px 40px 2px rgba(31, 19, 0, 0.8), 10px -5px 10px 2px rgba(0, 0, 0, 0.4);
+          box-shadow: inset 7px 15px 40px 2px rgba(31, 19, 0, 0.8), 10px -5px 10px 2px rgba(0, 0, 0, 0.4);
   background: -webkit-gradient(linear, left top, left bottom, from(#929091), to(#444244));
   background: linear-gradient(#929091, #444244);
   display: -webkit-box;
@@ -643,9 +664,9 @@ body::after {
 }
 
 .block .reward {
-  width: 300px;
-  height: 135px;
-  border-radius: 25px;
+  width: 30vmin;
+  height: 13vmin;
+  border-radius: 2.5vmin;
   background: #9e7715;
   position: relative;
   overflow: hidden;
@@ -659,8 +680,8 @@ body::after {
 }
 
 .block .reward:hover .glass:after {
-  -webkit-transform: translate(-65%, -50%) rotate(-12deg);
-          transform: translate(-65%, -50%) rotate(-12deg);
+  -webkit-transform: translate(-65%, -50%) rotate(-20deg);
+          transform: translate(-65%, -50%) rotate(-20deg);
 }
 
 .block .reward:hover {
@@ -669,8 +690,7 @@ body::after {
 }
 
 .block .reward .shadow {
-  content: '';
-  border-radius: 25px;
+  border-radius: 2.5vmin;
   -webkit-box-shadow: inset 0 -5px 15px 2px rgba(2, 0, 0, 0.85);
           box-shadow: inset 0 -5px 15px 2px rgba(2, 0, 0, 0.85);
   z-index: 1;
@@ -767,7 +787,6 @@ body::after {
   width: 100%;
   height: 65%;
   background: rgba(255, 255, 255, 0.233);
-  border-radius: 25px 25px 0 0;
   -webkit-box-shadow: inset rgba(195, 160, 0, 0.5) 0 3px 5px 2px, inset #614517 0 -1px 6px 0px, inset rgba(175, 0, 0, 0.102) 0 2px 5px 7px, rgba(92, 10, 10, 0.2) 0px 0px 5px 3px;
           box-shadow: inset rgba(195, 160, 0, 0.5) 0 3px 5px 2px, inset #614517 0 -1px 6px 0px, inset rgba(175, 0, 0, 0.102) 0 2px 5px 7px, rgba(92, 10, 10, 0.2) 0px 0px 5px 3px;
   overflow: hidden;
