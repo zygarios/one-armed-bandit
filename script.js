@@ -1,9 +1,6 @@
 const resultScreen = document.querySelector('.result-screen');
 
-const arm = document.querySelector('.arm');
 const armSpan = document.querySelector('.arm-span');
-
-const cards = document.querySelectorAll('.card');
 
 const input = document.querySelector('.set-deal');
 const winsSpan = document.querySelector('.wins');
@@ -24,10 +21,15 @@ const coinsReward = document.querySelector('.coins-win');
 const lightsTop = document.querySelectorAll('.result .lights span');
 const lightsBottom = document.querySelectorAll('.game-board .lights span');
 
+const hint1 = document.querySelector('.fa-hint-1');
+const hint2 = document.querySelector('.fa-hint-2');
+const hint3 = document.querySelector('.fa-hint-3');
 let cardUl = document.querySelectorAll('.card ul');
 let isGameOver = true;
 let isMachineWorks = false;
+let isTriggerOn = false;
 let inputValue;
+let firstGame = true;
 let stats = {
   wins: 0,
   loses: 0,
@@ -40,6 +42,27 @@ const timeRoll = 2000;
 const timeRewardAnim = 4000;
 
 const availableCards = ['pineapple.png', 'kiwi.png', 'lemon.png'];
+
+const handleHints = hint => {
+  if (firstGame) {
+    switch (hint) {
+      case 1:
+        hint1.style.display = 'none';
+        setTimeout(() => (hint2.style.display = 'inline'), 1500);
+        break;
+      case 2:
+        hint2.style.display = 'none';
+        hint3.style.display = 'inline';
+        break;
+      case 3:
+        hint3.style.display = 'none';
+        firstGame = false;
+        break;
+      default:
+        break;
+    }
+  }
+};
 
 const screenAlert = input => {
   resultScreen.textContent = input;
@@ -182,7 +205,7 @@ const drawRandomItems = () => {
 
 const handleGameStart = () => {
   if (isGameOver) {
-    screenAlert('Click Reset');
+    screenAlert('Start New Game');
     return;
   } else if (!isMachineWorks) {
     return;
@@ -195,11 +218,11 @@ const handleGameStart = () => {
     screenAlert('No money');
     isMachineWorks = true;
     return;
-  } else if (inputValue == '') {
+  } else if (inputValue == '' || inputValue == 0) {
     screenAlert('Empty value');
     isMachineWorks = true;
     return;
-  } else if (inputValue == '' || inputValue == 0) {
+  } else if (inputValue == '') {
     screenAlert('Va banque!');
   }
 
@@ -211,6 +234,7 @@ const handleGameStart = () => {
 };
 
 const resetGame = () => {
+  // handleHints(1);
   screenAlert('1000$ for you!');
   gate.style.transform = 'translateY(100%)';
   stats = {
@@ -228,6 +252,73 @@ const resetGame = () => {
   }, timeGameOverScreen);
 };
 
-cashSpan.textContent = stats.money + '$';
 reset.addEventListener('click', resetGame);
-arm.addEventListener('click', handleGameStart);
+input.addEventListener('input', function() {
+  const value = parseInt(this.value);
+  if (isGameOver) {
+    this.value = '';
+  } else if (isNaN(value) || value === 0) {
+    this.value = '';
+    screenAlert('Wrong number');
+  } else {
+    handleHints(2);
+  }
+});
+//
+
+const myTriggerTop = document.querySelector('.arm-span span');
+const myTriggerBottom = document.querySelector('.arm-span2 span');
+
+myTriggerTop.addEventListener('mousedown', () => {
+  if (isGameOver) {
+    screenAlert('Start New Game');
+    return;
+  } else if (!isMachineWorks) {
+    return;
+  } else {
+    isTriggerOn = true;
+  }
+});
+myTriggerTop.addEventListener('mouseup', () => {
+  if (isTriggerOn) {
+    isTriggerOn = false;
+    armSpan.style.transition = 'transform 1s';
+    armSpan.style.transform = 'rotate(15deg)';
+    setTimeout(() => {
+      armSpan.style.transition = 'none';
+    }, 1000);
+  }
+});
+document.body.addEventListener('mouseup', () => {
+  if (isTriggerOn) {
+    isTriggerOn = false;
+    armSpan.style.transition = 'transform 1s';
+    armSpan.style.transform = 'rotate(15deg)';
+    setTimeout(() => {
+      armSpan.style.transition = 'none';
+    }, 1000);
+  }
+});
+
+const spanTopY = myTriggerTop.getBoundingClientRect().top;
+const spanBottomY = myTriggerBottom.getBoundingClientRect().top;
+
+document.body.addEventListener('mousemove', e => {
+  if (isTriggerOn) {
+    const angleArm = 150;
+    const betweenArmSpans = spanBottomY - spanTopY;
+    const cursorPosition = e.clientY - spanTopY;
+    const newDeg = (cursorPosition * angleArm) / betweenArmSpans;
+    armSpan.style.transform = `rotate(${newDeg}deg)`;
+    if (newDeg >= 165) {
+      isTriggerOn = false;
+      handleHints(3);
+      handleGameStart();
+      armSpan.style.transition = 'transform 1s';
+      armSpan.style.transform = 'rotate(15deg)';
+      setTimeout(() => {
+        armSpan.style.transition = 'none';
+      }, 1000);
+    }
+  }
+});

@@ -102,6 +102,10 @@ html {
 }
 
 body {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   min-height: 100vh;
   background: lightgrey;
   display: -webkit-box;
@@ -114,6 +118,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
+  position: relative;
 }
 
 body::after {
@@ -171,6 +176,7 @@ body::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
 }
 
 .result {
@@ -197,7 +203,7 @@ body::after {
   width: 85%;
   height: 50%;
   text-align: center;
-  font-size: 2.5vmin;
+  font-size: 2.25vmin;
   padding-top: 2.5vmin;
   text-transform: uppercase;
   background: #690203;
@@ -320,6 +326,7 @@ body::after {
 
 .game-board .cards-container .gate .reset {
   font-size: 1.5vmin;
+  padding-top: 0.5vmin;
   font-weight: 300;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.15s, -webkit-box-shadow 0.15s;
@@ -455,29 +462,24 @@ body::after {
           box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4) 7px 0 7px 0px;
 }
 
-.game-board .arm .arm-span {
+.game-board .arm .arm-span,
+.game-board .arm .arm-span2 {
   position: absolute;
-  width: 2.5vmin;
-  height: 22.5vmin;
+  width: 2.25vmin;
+  height: 18vmin;
   background: -webkit-gradient(linear, left top, left bottom, from(#e8d36b), to(#bb7232));
   background: linear-gradient(#e8d36b, #bb7232);
   left: 10%;
   bottom: 50%;
   -webkit-transform-origin: bottom;
           transform-origin: bottom;
-  -webkit-transform: rotate(15deg);
-          transform: rotate(15deg);
   border-radius: 100% 100% 75% 75%;
   -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4) 10px 5px 7px 2px;
           box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4) 10px 5px 7px 2px;
 }
 
-.game-board .arm .arm-span.arm-clicked {
-  -webkit-animation: armHand 1.5s;
-          animation: armHand 1.5s;
-}
-
-.game-board .arm .arm-span span {
+.game-board .arm .arm-span span,
+.game-board .arm .arm-span2 span {
   position: absolute;
   width: 5vmin;
   height: 5vmin;
@@ -491,13 +493,25 @@ body::after {
           box-shadow: inset rgba(29, 0, 0, 0.8) 0 -1px 7px 4px, inset rgba(255, 0, 0, 0.7) 0 2px 1px -10px, rgba(0, 0, 0, 0.5) 12px -2px 5px 4px;
 }
 
+.game-board .arm .arm-span {
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+}
+
+.game-board .arm .arm-span2 {
+  -webkit-transform: rotate(165deg);
+          transform: rotate(165deg);
+  visibility: hidden;
+}
+
 .console-container {
   height: 18vmin;
   width: 65vmin;
-  -webkit-perspective: 55vmin;
-          perspective: 55vmin;
+  -webkit-perspective: 65vmin;
+          perspective: 65vmin;
   margin: 0 auto;
   z-index: 1;
+  position: relative;
 }
 
 .console-container .console {
@@ -530,7 +544,6 @@ body::after {
   border: none;
   -webkit-box-shadow: inset 5px 5px 10px 0px rgba(0, 0, 0, 0.35), inset -15px -15px 25px 5px rgba(255, 255, 255, 0.35);
           box-shadow: inset 5px 5px 10px 0px rgba(0, 0, 0, 0.35), inset -15px -15px 25px 5px rgba(255, 255, 255, 0.35);
-  border: 2px solid gold;
   border-radius: 15px;
   color: #3c3c3c;
   -webkit-transition: background 0.3s;
@@ -581,7 +594,6 @@ body::after {
   font-size: 1.1vmin;
   line-height: 2.15vmin;
   border-radius: 15px;
-  border: 1px solid #c3a600;
   position: relative;
   overflow: hidden;
   display: -webkit-box;
@@ -645,7 +657,7 @@ body::after {
   -webkit-transform: translateY(-1vmin);
           transform: translateY(-1vmin);
   height: 20vmin;
-  width: 76vmin;
+  width: 74vmin;
   margin: 0 auto;
   border-radius: 0 0 40px 40px / 0 0 40px 40px;
   -webkit-box-shadow: inset 7px 15px 40px 2px rgba(31, 19, 0, 0.8), 10px -5px 10px 2px rgba(0, 0, 0, 0.4);
@@ -811,5 +823,138 @@ body::after {
   transition: -webkit-transform 0.15s;
   transition: transform 0.15s;
   transition: transform 0.15s, -webkit-transform 0.15s;
+}
+
+.fas {
+  position: absolute;
+  font-size: 7vmin;
+  color: rgba(255, 255, 255, 0);
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0);
+  z-index: 1;
+}
+
+.fas.fa-hint-1 {
+  left: 10%;
+  bottom: 5%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  -webkit-animation: hintOpacityAnimation 1s ease infinite, hint1Anim 1s ease infinite;
+          animation: hintOpacityAnimation 1s ease infinite, hint1Anim 1s ease infinite;
+}
+
+.fas.fa-hint-2 {
+  display: none;
+  left: 10%;
+  bottom: -30%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  -webkit-animation: hintOpacityAnimation 1s ease infinite, hint2Anim 1s ease infinite;
+          animation: hintOpacityAnimation 1s ease infinite, hint2Anim 1s ease infinite;
+}
+
+.fas.fa-hint-3 {
+  display: none;
+  left: 80%;
+  bottom: 70%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  -webkit-animation: hintOpacityAnimation 1s ease infinite, hint3Anim 1s ease infinite;
+          animation: hintOpacityAnimation 1s ease infinite, hint3Anim 1s ease infinite;
+}
+
+@-webkit-keyframes hintOpacityAnimation {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0);
+    color: rgba(255, 215, 0, 0);
+  }
+  20% {
+    text-shadow: 0 0 5px gold;
+    color: #ffdf33;
+  }
+  100% {
+    text-shadow: 0 0 5px gold;
+    color: white;
+  }
+}
+
+@keyframes hintOpacityAnimation {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0);
+    color: rgba(255, 215, 0, 0);
+  }
+  20% {
+    text-shadow: 0 0 5px gold;
+    color: #ffdf33;
+  }
+  100% {
+    text-shadow: 0 0 5px gold;
+    color: white;
+  }
+}
+
+@-webkit-keyframes hint1Anim {
+  0% {
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+  100% {
+    -webkit-transform: translate(175%, -50%);
+            transform: translate(175%, -50%);
+  }
+}
+
+@keyframes hint1Anim {
+  0% {
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+  100% {
+    -webkit-transform: translate(175%, -50%);
+            transform: translate(175%, -50%);
+  }
+}
+
+@-webkit-keyframes hint2Anim {
+  0% {
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0, -90%);
+            transform: translate(0, -90%);
+  }
+}
+
+@keyframes hint2Anim {
+  0% {
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0, -90%);
+            transform: translate(0, -90%);
+  }
+}
+
+@-webkit-keyframes hint3Anim {
+  0% {
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0, -120%);
+            transform: translate(0, -120%);
+  }
+}
+
+@keyframes hint3Anim {
+  0% {
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+  }
+  100% {
+    -webkit-transform: translate(0, -120%);
+            transform: translate(0, -120%);
+  }
 }
 /*# sourceMappingURL=style.css.map */

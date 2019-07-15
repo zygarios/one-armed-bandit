@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/1369f31641.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -47,9 +48,12 @@
         </div>
         <div class="cards-container">
           <div class="gate">
+            <i class="fas fa-caret-right fa-hint-1"></i>
             <h1 class="gate-text">New Game</h1>
-            <h3 class="gate-subtext"></h3>
-            <button class="reset">Start with 1000$</button>
+            <h3 class="gate-subtext">Win with a multiplier x3 !</h3>
+            <button class="reset">
+              Start with 1000$
+            </button>
           </div>
           <div class="card" id="card-1">
             <ul>
@@ -74,12 +78,22 @@
           </div>
         </div>
         <div class="arm">
-          <span class="arm-span"><span></span></span>
+          <i class="fas fa-caret-up fa-hint-3"></i>
+          <span class="arm-span">
+            <span> </span>
+          </span>
+          <span class="arm-span2"><span></span></span>
         </div>
       </div>
       <div class="console-container">
+        <i class="fas fa-caret-up fa-hint-2"></i>
         <div class="console">
-          <input class="set-deal" type="number" placeholder="Input value" />
+          <input
+            class="set-deal"
+            type="number"
+            min="0"
+            placeholder="Input value"
+          />
           <div class="stats">
             <p>Wins: <br /><span class="wins">0</span></p>
             <p>Loses: <br /><span class="loses">0</span></p>
