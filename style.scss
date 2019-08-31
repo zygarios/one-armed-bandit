@@ -11,7 +11,6 @@
     transform: rotate(15deg);
   }
 }
-
 @keyframes alert {
   0% {
     color: rgba(255, 215, 0, 1);
@@ -31,12 +30,10 @@
     box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5), 0 0 0px 0 goldenrod;
     background: gold;
   }
-
   50% {
     box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5), 0 0 10px 2px gold;
     background: yellow;
   }
-
   100% {
     box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5), 0 0 0px 0 goldenrod;
     background: gold;
@@ -64,7 +61,6 @@ body {
   align-items: center;
   overflow: hidden;
   position: relative;
-
   &::after {
     content: '';
     width: 100vw;
@@ -78,7 +74,6 @@ body {
     transform: scale(1.01);
   }
 }
-
 .lights {
   position: absolute;
   left: 0;
@@ -95,14 +90,12 @@ body {
     height: 1.75vmin;
     border-radius: 50%;
     background: gold;
-
     &.light-active {
       animation: lightsOn 0.25s linear;
       animation-iteration-count: 10;
     }
   }
 }
-
 .container {
   max-width: 800px;
   display: flex;
@@ -142,7 +135,6 @@ body {
     &:hover::before {
       box-shadow: 0 -10px 25px 15px rgba(255, 255, 255, 0.25);
     }
-
     &.alert {
       animation: alert 0.35s linear 0s infinite;
     }
@@ -255,7 +247,7 @@ body {
 
       .reset {
         font-size: 1.5vmin;
-        padding-top: 0.5vmin;
+        padding-top: .5vmin;
         font-weight: 300;
         cursor: pointer;
         transition: transform 0.15s, box-shadow 0.15s;
@@ -348,7 +340,7 @@ body {
       box-shadow: 0 0 0 10px #ab6b11, inset 0 0 20px 0 rgba(0, 0, 0, 0.75);
       position: relative;
       overflow: hidden;
-
+      
       ul {
         list-style-type: none;
         position: absolute;
@@ -357,11 +349,11 @@ body {
         left: 0;
         bottom: 0;
         transition: bottom 2s ease;
-
+        
         li {
           height: 100%;
           background-repeat: no-repeat;
-          background-position: center;
+          background-position: center; 
           background-size: contain;
         }
       }
@@ -406,8 +398,7 @@ body {
         rgba(0, 0, 0, 0.4) 7px 0 7px 0px;
     }
 
-    .arm-span,
-    .arm-span2 {
+    .arm-span, .arm-span2{
       position: absolute;
       width: 2.25vmin;
       height: 18vmin;
@@ -436,12 +427,11 @@ body {
           inset rgba(255, 0, 0, 0.7) 0 2px 1px -10px,
           rgba(0, 0, 0, 0.5) 12px -2px 5px 4px;
       }
-    }
 
+    }
     .arm-span {
       transform: rotate(15deg);
     }
-
     .arm-span2 {
       transform: rotate(165deg);
       visibility: hidden;
@@ -452,11 +442,10 @@ body {
 .console-container {
   height: 18vmin;
   width: 65vmin;
-  perspective: 65vmin;
+  perspective: 55vmin;
   margin: 0 auto;
   z-index: 1;
   position: relative;
-
   .console {
     background: #868686;
     height: 100%;
@@ -567,7 +556,7 @@ body {
 .block {
   transform: translateY(-1vmin);
   height: 20vmin;
-  width: 74vmin;
+  width: 76vmin;
   margin: 0 auto;
   border-radius: 0 0 40px 40px / 0 0 40px 40px;
   box-shadow: inset 7px 15px 40px 2px rgba(31, 19, 0, 0.8),
@@ -587,11 +576,9 @@ body {
     transition: filter 0.25s;
     filter: brightness(90%);
     cursor: pointer;
-
     &:hover .glass:after {
       transform: translate(-65%, -50%) rotate(-20deg);
     }
-
     &:hover {
       filter: brightness(110%);
     }
@@ -611,45 +598,36 @@ body {
       top: 0;
       left: 0;
     }
-
     @keyframes goldReward {
       0% {
         background-position: center -250%;
       }
-
       60% {
         background-position: center 0;
       }
-
       80% {
         background-position: center 0;
       }
-
       100% {
         background-position: center -250%;
       }
     }
-
     @keyframes goldFall {
       0% {
         background-position: center 1200%;
       }
-
       75% {
         background-position: center 0;
       }
-
       100% {
         background-position: center 0;
       }
     }
-
     .coins-fall-win {
       width: 100%;
       background: url('coins-fall-win.png');
       background-size: 100% auto;
       background-position: center 1200%;
-
       &.active-anim {
         animation: goldFall 4s linear;
       }
@@ -658,7 +636,6 @@ body {
     .coins-win {
       background: url('coins-win.png') no-repeat;
       background-position: center -200%;
-
       &.active-anim {
         animation: goldReward 4s ease-out;
       }
@@ -674,7 +651,6 @@ body {
         inset rgba(175, 0, 0, 0.102) 0 2px 5px 7px,
         rgba(92, 10, 10, 0.2) 0px 0px 5px 3px;
       overflow: hidden;
-
       &:after {
         content: '';
         position: absolute;
@@ -697,73 +673,63 @@ body {
   color: rgba(255, 255, 255, 0);
   text-shadow: 0 0 5px rgba(255, 215, 0, 0);
   z-index: 1;
-
-  &.fa-hint-1 {
+  &.fa-tip-1 {
     left: 10%;
     bottom: 5%;
     transform: translate(0, -50%);
-    animation: hintOpacityAnimation 1s ease infinite, hint1Anim 1s ease infinite;
+    animation: tipOpacityAnimation .75s ease infinite, tip1Anim .75s ease infinite;
   }
-
-  &.fa-hint-2 {
+  &.fa-tip-2 {  
     display: none;
     left: 10%;
     bottom: -30%;
     transform: translate(0, -50%);
-    animation: hintOpacityAnimation 1s ease infinite, hint2Anim 1s ease infinite;
-  }
+    animation: tipOpacityAnimation .75s ease infinite, tip2Anim .75s ease infinite;
 
-  &.fa-hint-3 {
+  }
+  &.fa-tip-3 {  
     display: none;
     left: 80%;
     bottom: 70%;
     transform: translate(0, -50%);
-    animation: hintOpacityAnimation 1s ease infinite, hint3Anim 1s ease infinite;
+    animation: tipOpacityAnimation .75s ease infinite, tip3Anim .75s ease infinite;
   }
 }
 
-@keyframes hintOpacityAnimation {
+@keyframes tipOpacityAnimation {
   0% {
     text-shadow: 0 0 5px rgba(255, 215, 0, 0);
     color: rgba(255, 215, 0, 0);
   }
-
   20% {
     text-shadow: 0 0 5px rgba(255, 215, 0, 1);
     color: rgba(255, 223, 51, 1);
   }
-
   100% {
     text-shadow: 0 0 5px rgba(255, 215, 0, 1);
     color: rgba(255, 255, 255, 1);
   }
 }
-
-@keyframes hint1Anim {
+@keyframes tip1Anim {
   0% {
     transform: translate(0, -50%);
   }
-
   100% {
     transform: translate(175%, -50%);
   }
 }
-
-@keyframes hint2Anim {
+@keyframes tip2Anim {
   0% {
     transform: translate(0, -50%);
   }
-
   100% {
     transform: translate(0, -90%);
   }
 }
-
-@keyframes hint3Anim {
+@keyframes tip3Anim {
   0% {
     transform: translate(0, -50%);
   }
-
   100% {
     transform: translate(0, -120%);
   }
