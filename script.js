@@ -21,9 +21,10 @@ const coinsReward = document.querySelector('.coins-win');
 const lightsTop = document.querySelectorAll('.result .lights span');
 const lightsBottom = document.querySelectorAll('.game-board .lights span');
 
-const hint1 = document.querySelector('.fa-hint-1');
-const hint2 = document.querySelector('.fa-hint-2');
-const hint3 = document.querySelector('.fa-hint-3');
+const tip1 = document.querySelector('.fa-tip-1');
+const tip2 = document.querySelector('.fa-tip-2');
+const tip3 = document.querySelector('.fa-tip-3');
+
 let cardUl = document.querySelectorAll('.card ul');
 let isGameOver = true;
 let isMachineWorks = false;
@@ -43,19 +44,19 @@ const timeRewardAnim = 4000;
 
 const availableCards = ['pineapple.png', 'kiwi.png', 'lemon.png'];
 
-const handleHints = hint => {
+const handleTips = tip => {
   if (firstGame) {
-    switch (hint) {
+    switch (tip) {
       case 1:
-        hint1.style.display = 'none';
-        setTimeout(() => (hint2.style.display = 'inline'), 1500);
+        tip1.style.display = 'none';
+        setTimeout(() => (tip2.style.display = 'inline'), 1500);
         break;
       case 2:
-        hint2.style.display = 'none';
-        hint3.style.display = 'inline';
+        tip2.style.display = 'none';
+        tip3.style.display = 'inline';
         break;
       case 3:
-        hint3.style.display = 'none';
+        tip3.style.display = 'none';
         firstGame = false;
         break;
       default:
@@ -234,7 +235,7 @@ const handleGameStart = () => {
 };
 
 const resetGame = () => {
-  // handleHints(1);
+  handleTips(1);
   screenAlert('1000$ for you!');
   gate.style.transform = 'translateY(100%)';
   stats = {
@@ -261,7 +262,7 @@ input.addEventListener('input', function() {
     this.value = '';
     screenAlert('Wrong number');
   } else {
-    handleHints(2);
+    handleTips(2);
   }
 });
 //
@@ -312,7 +313,7 @@ document.body.addEventListener('mousemove', e => {
     armSpan.style.transform = `rotate(${newDeg}deg)`;
     if (newDeg >= 165) {
       isTriggerOn = false;
-      handleHints(3);
+      handleTips(3);
       handleGameStart();
       armSpan.style.transition = 'transform 1s';
       armSpan.style.transform = 'rotate(15deg)';

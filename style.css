@@ -326,7 +326,7 @@ body::after {
 
 .game-board .cards-container .gate .reset {
   font-size: 1.5vmin;
-  padding-top: 0.5vmin;
+  padding-top: .5vmin;
   font-weight: 300;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.15s, -webkit-box-shadow 0.15s;
@@ -507,8 +507,8 @@ body::after {
 .console-container {
   height: 18vmin;
   width: 65vmin;
-  -webkit-perspective: 65vmin;
-          perspective: 65vmin;
+  -webkit-perspective: 55vmin;
+          perspective: 55vmin;
   margin: 0 auto;
   z-index: 1;
   position: relative;
@@ -657,7 +657,7 @@ body::after {
   -webkit-transform: translateY(-1vmin);
           transform: translateY(-1vmin);
   height: 20vmin;
-  width: 74vmin;
+  width: 76vmin;
   margin: 0 auto;
   border-radius: 0 0 40px 40px / 0 0 40px 40px;
   -webkit-box-shadow: inset 7px 15px 40px 2px rgba(31, 19, 0, 0.8), 10px -5px 10px 2px rgba(0, 0, 0, 0.4);
@@ -833,36 +833,36 @@ body::after {
   z-index: 1;
 }
 
-.fas.fa-hint-1 {
+.fas.fa-tip-1 {
   left: 10%;
   bottom: 5%;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
-  -webkit-animation: hintOpacityAnimation 1s ease infinite, hint1Anim 1s ease infinite;
-          animation: hintOpacityAnimation 1s ease infinite, hint1Anim 1s ease infinite;
+  -webkit-animation: tipOpacityAnimation .75s ease infinite, tip1Anim .75s ease infinite;
+          animation: tipOpacityAnimation .75s ease infinite, tip1Anim .75s ease infinite;
 }
 
-.fas.fa-hint-2 {
+.fas.fa-tip-2 {
   display: none;
   left: 10%;
   bottom: -30%;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
-  -webkit-animation: hintOpacityAnimation 1s ease infinite, hint2Anim 1s ease infinite;
-          animation: hintOpacityAnimation 1s ease infinite, hint2Anim 1s ease infinite;
+  -webkit-animation: tipOpacityAnimation .75s ease infinite, tip2Anim .75s ease infinite;
+          animation: tipOpacityAnimation .75s ease infinite, tip2Anim .75s ease infinite;
 }
 
-.fas.fa-hint-3 {
+.fas.fa-tip-3 {
   display: none;
   left: 80%;
   bottom: 70%;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
-  -webkit-animation: hintOpacityAnimation 1s ease infinite, hint3Anim 1s ease infinite;
-          animation: hintOpacityAnimation 1s ease infinite, hint3Anim 1s ease infinite;
+  -webkit-animation: tipOpacityAnimation .75s ease infinite, tip3Anim .75s ease infinite;
+          animation: tipOpacityAnimation .75s ease infinite, tip3Anim .75s ease infinite;
 }
 
-@-webkit-keyframes hintOpacityAnimation {
+@-webkit-keyframes tipOpacityAnimation {
   0% {
     text-shadow: 0 0 5px rgba(255, 215, 0, 0);
     color: rgba(255, 215, 0, 0);
@@ -877,7 +877,7 @@ body::after {
   }
 }
 
-@keyframes hintOpacityAnimation {
+@keyframes tipOpacityAnimation {
   0% {
     text-shadow: 0 0 5px rgba(255, 215, 0, 0);
     color: rgba(255, 215, 0, 0);
@@ -892,7 +892,7 @@ body::after {
   }
 }
 
-@-webkit-keyframes hint1Anim {
+@-webkit-keyframes tip1Anim {
   0% {
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
@@ -903,7 +903,7 @@ body::after {
   }
 }
 
-@keyframes hint1Anim {
+@keyframes tip1Anim {
   0% {
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
@@ -914,7 +914,7 @@ body::after {
   }
 }
 
-@-webkit-keyframes hint2Anim {
+@-webkit-keyframes tip2Anim {
   0% {
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
@@ -925,7 +925,7 @@ body::after {
   }
 }
 
-@keyframes hint2Anim {
+@keyframes tip2Anim {
   0% {
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
@@ -936,7 +936,7 @@ body::after {
   }
 }
 
-@-webkit-keyframes hint3Anim {
+@-webkit-keyframes tip3Anim {
   0% {
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
@@ -947,7 +947,7 @@ body::after {
   }
 }
 
-@keyframes hint3Anim {
+@keyframes tip3Anim {
   0% {
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);

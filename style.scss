@@ -201,33 +201,23 @@ body {
       box-shadow: inset hsla(0, 0%, 15%, 0.8) 0 -1px 5px 4px,
         inset hsla(39, 100%, 12%, 0.25) 0 -1px 2px 7px,
         inset hsla(0, 0%, 70%, 0.7) 0 2px 3px 7px;
-      background-image: -webkit-repeating-linear-gradient(
-          left,
+      background-image: -webkit-repeating-linear-gradient(left,
           hsla(0, 0%, 70%, 0) 0%,
           hsla(0, 0%, 70%, 0) 6%,
-          hsla(0, 0%, 70%, 0.1) 7.5%
-        ),
-        -webkit-repeating-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, hsla(
-                0,
-                0%,
-                0%,
-                0
-              )
-              4%, hsla(0, 0%, 0%, 0.03) 4.5%),
-        -webkit-repeating-linear-gradient(left, hsla(0, 0%, 100%, 0) 0%, hsla(
-                0,
-                0%,
-                70%,
-                0
-              )
-              1.2%, hsla(0, 0%, 100%, 0.15) 2.2%),
-        linear-gradient(
-          180deg,
+          hsla(0, 0%, 70%, 0.1) 7.5%),
+        -webkit-repeating-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, hsla(0,
+            0%,
+            0%,
+            0) 4%, hsla(0, 0%, 0%, 0.03) 4.5%),
+        -webkit-repeating-linear-gradient(left, hsla(0, 0%, 100%, 0) 0%, hsla(0,
+            0%,
+            70%,
+            0) 1.2%, hsla(0, 0%, 100%, 0.15) 2.2%),
+        linear-gradient(180deg,
           hsl(0, 0%, 60%) 0%,
           hsl(0, 0%, 70%) 47%,
           hsl(0, 0%, 80%) 53%,
-          hsl(0, 0%, 40%) 100%
-        );
+          hsl(0, 0%, 40%) 100%);
       justify-content: center;
       align-items: center;
       align-content: center;
@@ -255,7 +245,7 @@ body {
 
       .reset {
         font-size: 1.5vmin;
-        padding-top: 0.5vmin;
+        padding-top: .5vmin;
         font-weight: 300;
         cursor: pointer;
         transition: transform 0.15s, box-shadow 0.15s;
@@ -267,33 +257,23 @@ body {
         box-shadow: inset #7c7c7ccc 0 -1px 5px 4px,
           inset #ffffffb3 0 -1px 0px 7px, inset #27272740 0 2px 1px 7px,
           2px 3px 3px 0 rgb(85, 85, 85);
-        background-image: -webkit-repeating-linear-gradient(
-            left,
+        background-image: -webkit-repeating-linear-gradient(left,
             hsla(0, 0%, 100%, 0) 0%,
             hsla(0, 0%, 100%, 0) 6%,
-            hsla(0, 0%, 100%, 0.1) 7.5%
-          ),
-          -webkit-repeating-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, hsla(
-                  0,
-                  0%,
-                  0%,
-                  0
-                )
-                4%, hsla(0, 0%, 0%, 0.03) 4.5%),
-          -webkit-repeating-linear-gradient(left, hsla(0, 0%, 100%, 0) 0%, hsla(
-                  0,
-                  0%,
-                  100%,
-                  0
-                )
-                1.2%, hsla(0, 0%, 100%, 0.15) 2.2%),
-          linear-gradient(
-            180deg,
+            hsla(0, 0%, 100%, 0.1) 7.5%),
+          -webkit-repeating-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, hsla(0,
+              0%,
+              0%,
+              0) 4%, hsla(0, 0%, 0%, 0.03) 4.5%),
+          -webkit-repeating-linear-gradient(left, hsla(0, 0%, 100%, 0) 0%, hsla(0,
+              0%,
+              100%,
+              0) 1.2%, hsla(0, 0%, 100%, 0.15) 2.2%),
+          linear-gradient(180deg,
             hsl(0, 0%, 78%) 0%,
             hsl(0, 0%, 90%) 47%,
             hsl(0, 0%, 78%) 53%,
-            hsl(0, 0%, 70%) 100%
-          );
+            hsl(0, 0%, 70%) 100%);
 
         &:hover {
           transform: translate(3px, 3px);
@@ -372,11 +352,9 @@ body {
     position: absolute;
     width: 6vmin;
     height: 12vmin;
-    background: linear-gradient(
-      rgb(199, 151, 29),
-      rgb(177, 150, 0),
-      rgb(199, 151, 29)
-    );
+    background: linear-gradient(rgb(199, 151, 29),
+        rgb(177, 150, 0),
+        rgb(199, 151, 29));
     left: 100%;
     top: 50%;
     transform: translateY(-50%);
@@ -436,6 +414,7 @@ body {
           inset rgba(255, 0, 0, 0.7) 0 2px 1px -10px,
           rgba(0, 0, 0, 0.5) 12px -2px 5px 4px;
       }
+
     }
 
     .arm-span {
@@ -452,7 +431,7 @@ body {
 .console-container {
   height: 18vmin;
   width: 65vmin;
-  perspective: 65vmin;
+  perspective: 55vmin;
   margin: 0 auto;
   z-index: 1;
   position: relative;
@@ -567,7 +546,7 @@ body {
 .block {
   transform: translateY(-1vmin);
   height: 20vmin;
-  width: 74vmin;
+  width: 76vmin;
   margin: 0 auto;
   border-radius: 0 0 40px 40px / 0 0 40px 40px;
   box-shadow: inset 7px 15px 40px 2px rgba(31, 19, 0, 0.8),
@@ -698,31 +677,32 @@ body {
   text-shadow: 0 0 5px rgba(255, 215, 0, 0);
   z-index: 1;
 
-  &.fa-hint-1 {
+  &.fa-tip-1 {
     left: 10%;
     bottom: 5%;
     transform: translate(0, -50%);
-    animation: hintOpacityAnimation 1s ease infinite, hint1Anim 1s ease infinite;
+    animation: tipOpacityAnimation .75s ease infinite, tip1Anim .75s ease infinite;
   }
 
-  &.fa-hint-2 {
+  &.fa-tip-2 {
     display: none;
     left: 10%;
     bottom: -30%;
     transform: translate(0, -50%);
-    animation: hintOpacityAnimation 1s ease infinite, hint2Anim 1s ease infinite;
+    animation: tipOpacityAnimation .75s ease infinite, tip2Anim .75s ease infinite;
+
   }
 
-  &.fa-hint-3 {
+  &.fa-tip-3 {
     display: none;
     left: 80%;
     bottom: 70%;
     transform: translate(0, -50%);
-    animation: hintOpacityAnimation 1s ease infinite, hint3Anim 1s ease infinite;
+    animation: tipOpacityAnimation .75s ease infinite, tip3Anim .75s ease infinite;
   }
 }
 
-@keyframes hintOpacityAnimation {
+@keyframes tipOpacityAnimation {
   0% {
     text-shadow: 0 0 5px rgba(255, 215, 0, 0);
     color: rgba(255, 215, 0, 0);
@@ -739,7 +719,7 @@ body {
   }
 }
 
-@keyframes hint1Anim {
+@keyframes tip1Anim {
   0% {
     transform: translate(0, -50%);
   }
@@ -749,7 +729,7 @@ body {
   }
 }
 
-@keyframes hint2Anim {
+@keyframes tip2Anim {
   0% {
     transform: translate(0, -50%);
   }
@@ -759,7 +739,7 @@ body {
   }
 }
 
-@keyframes hint3Anim {
+@keyframes tip3Anim {
   0% {
     transform: translate(0, -50%);
   }
